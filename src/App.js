@@ -2,6 +2,25 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const synth = window.speechSynthesis;
+
+// English (en-US)
+// Spanish (es-ES)
+// French (fr-FR)
+// German (de-DE)
+// Italian (it-IT)
+// Portuguese (pt-PT)
+// Russian (ru-RU)
+// Chinese (zh-CN)
+// Japanese (ja-JP)
+// Korean (ko-KR)
+// Arabic (ar-SA)
+  function speakText(text) {
+    const utterance = new SpeechSynthesisUtterance("نور شائطة");
+    utterance.lang = 'ar-SA';
+    synth.speak(utterance);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -9,14 +28,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>
+      <button onClick={speakText}>Speak</button>
+    </div>
       </header>
     </div>
   );

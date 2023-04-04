@@ -1,38 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Dashboard from "./pages/Dashboard/Dashboard";
+
+import Users from "./pages/Dashboard/Users";
+import AllProducts from "./pages/Dashboard/AllProducts";
+import Orders from "./pages/Dashboard/Orders";
+import AddProduct from "./pages/Dashboard/AddProduct";
+import LoginDashboard from "./pages/Dashboard/LoginDashboard";
+import SideBar from './components/Dashboard/SideBar'
+
+import { useSelector } from 'react-redux';
+import EditUserform from './components/Dashboard/EditUserform';
+import EditOrderform from './components/Dashboard/EditOrderform';
+import EditProductform from './components/Dashboard/EditProductform';
+import Dash from "./Dash";
 
 function App() {
-  const synth = window.speechSynthesis;
-
-// English (en-US)
-// Spanish (es-ES)
-// French (fr-FR)
-// German (de-DE)
-// Italian (it-IT)
-// Portuguese (pt-PT)
-// Russian (ru-RU)
-// Chinese (zh-CN)
-// Japanese (ja-JP)
-// Korean (ko-KR)
-// Arabic (ar-SA)
-  function speakText(text) {
-    const utterance = new SpeechSynthesisUtterance("نور شائطة");
-    utterance.lang = 'ar-SA';
-    synth.speak(utterance);
-  }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div>
-      <button onClick={speakText}>Speak</button>
-    </div>
-      </header>
-    </div>
+    <>
+
+      <Router>
+
+        <Routes>
+        <Route path="/dashboard" element={<Dash />}>
+            <Route path="/dashboard" exact element={<Dashboard />} />
+            <Route path="users" exact element={<Users />} />
+            <Route path="products" exact element={<AllProducts />} />
+            <Route path="orders" exact element={<Orders />} />
+            <Route path="products/add" exact element={<AddProduct />} />
+
+          </Route>
+          <Route path="/" exact element={<LoginDashboard />} />
+
+        </Routes>
+
+
+      </Router>
+    </>
   );
 }
 

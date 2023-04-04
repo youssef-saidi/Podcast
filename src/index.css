@@ -1,13 +1,221 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Dynalight&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');
+
+:root {
+  --pink: #D81B60;
+  --gray: #f3f4f6;
+  --dark: #1F1F1F;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+
+}
+
+
+body {
+  background-color: var(--gray);
+
+}
+
+.font-Dynalight {
+  font-family: 'Dynalight', cursive;
+}
+
+.font-candy {
+  font-family: 'Emilys Candy', cursive;
+}
+
+.text-pink {
+  color: var(--pink);
+}
+
+.bg-pink {
+  background-color: var(--pink);
+}
+
+.bg-dark {
+  background-color: var(--dark);
+}
+
+.title {
+  font-weight: 450;
+  margin-bottom: 30px;
+
+}
+
+.title::after {
+  content: '';
+  display: block;
+  margin: auto;
+  width: 80px;
+  padding: 4px 0;
+  border-bottom: 3px solid var(--pink);
+}
+
+.active {
+  color: var(--pink);
+
+}
+
+.active::after {
+  content: "";
+  display: block;
+  width: 30px;
+  border-bottom: 3px solid var(--pink);
+}
+
+
+.side-drawer {
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+.side-drawer.open {
+  transform: translateY(0);
+}
+
+@media (min-width: 1024px) {
+  .side-drawer {
+
+    transform: translateX(0%);
+
+  }
+}
+
+.stat {
+  background-image: url(../public/Images/pink-bg.png);
+  height: 12rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Swiper */
+
+
+.swiper-slide {
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+
+.swiper-button-next::after {
+  color: var(--pink);
+}
+.hoverdelete:hover >svg{
+  fill: red;
+}
+.hoverdelete:hover >button{
+  color: red;
+}
+
+.swiper-button-prev::after {
+  color: var(--pink);
+}
+
+
+
+/* pagination */
+.numberPage{
+  margin: 5px 15px;
+}
+@media (max-width: 768px) {
+  .numberPage{
+   display: none;
+  }
+}
+.pageContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.previousBoutton {
+  position: absolute;
+  left: 0;
+  -moz-user-select: none;
+  /* Firefox */
+  -webkit-user-select: none;
+  /* Chrome, Safari, Opéra depuis la version 15 */
+  -ms-user-select: none;
+  /* Internet explorer depuis la version 10 et Edge */
+  user-select: none;
+  /* Propriété standard */
+  color: rgba(255, 255, 255, 0);
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  border: solid #000000;
+  border-width: 1.5px;
+  background-image: url("../public/Images/previousBoutton.png");
+  background-size: cover;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+.nextBoutton {
+  position: absolute;
+  right: 0;
+  -moz-user-select: none;
+  /* Firefox */
+  -webkit-user-select: none;
+  /* Chrome, Safari, Opéra depuis la version 15 */
+  -ms-user-select: none;
+  /* Internet explorer depuis la version 10 et Edge */
+  user-select: none;
+  /* Propriété standard */
+  color: rgb(255, 255, 255, 0);
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  border: solid #000000;
+  border-width: 1.5px;
+  background-image: url("../public/Images/nextBoutton.png");
+  background-size: cover;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+.activePage {
+  display: block;
+  background-color: #ffffff;
+  -moz-user-select: none;
+  /* Firefox */
+  -webkit-user-select: none;
+  /* Chrome, Safari, Opéra depuis la version 15 */
+  -ms-user-select: none;
+  /* Internet explorer depuis la version 10 et Edge */
+  user-select: none;
+  /* Propriété standard */
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  border: solid #000000;
+  border-width: 1.5px;
+  font-weight: 600;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
 }
